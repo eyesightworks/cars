@@ -1,192 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutoCanada - Cars for Sale</title>
-<style>
-/* ====== RESET ====== */
-* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-body { background:#f5f5f5; line-height:1.6; color:#333; }
+  <meta charset="UTF-8">
+  <title>AutoMarket Canada</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* ====== HEADER ====== */
-header { background:#d71a28; color:white; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
-header h1 { font-size:24px; }
-nav a { color:white; margin:0 10px; text-decoration:none; font-weight:bold; }
-nav a:hover { text-decoration:underline; }
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 
-/* ====== HERO SEARCH ====== */
-.hero { background:white; padding:60px 20px; text-align:center; }
-.hero h2 { margin-bottom:20px; font-size:28px; }
-.hero input, .hero select { padding:12px; font-size:16px; border-radius:5px; border:1px solid #ccc; margin:5px 0; }
-.hero button { padding:12px 20px; border:none; border-radius:5px; background:#d71a28; color:white; cursor:pointer; font-weight:bold; }
-
-/* ====== SECTIONS ====== */
-section { padding:40px 20px; }
-.section-title { text-align:center; margin-bottom:30px; font-size:24px; }
-
-/* ====== GRID ====== */
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-
-/* ====== CARDS ====== */
-.card { background:white; border-radius:8px; padding:20px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-.card img { width:100%; border-radius:8px; margin-bottom:10px; }
-.card h3 { margin-bottom:5px; font-size:18px; }
-.card p { font-size:14px; color:#555; margin-bottom:5px; }
-.card button { padding:8px 12px; border:none; border-radius:5px; background:#d71a28; color:white; cursor:pointer; font-size:14px; }
-
-/* ====== FOOTER ====== */
-footer { background:#d71a28; color:white; text-align:center; padding:20px; }
-footer a { color:white; margin:0 8px; text-decoration:none; }
-
-/* ====== RESPONSIVE ====== */
-@media(max-width:768px){
-    header { flex-direction:column; align-items:flex-start; }
-    nav { margin-top:10px; }
-    .hero input, .hero select { width:90%; }
-}
-</style>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<!-- HEADER -->
-<header>
-    <h1>AutoCanada</h1>
-    <nav>
-        <a href="#hero">Home</a>
-        <a href="#featured">Cars</a>
-        <a href="#popular">Popular</a>
-        <a href="#news">News</a>
-        <a href="#dealers">Dealers</a>
-        <a href="#footer">Contact</a>
-    </nav>
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="logo">🚗 AutoMarket</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Buy</a>
+    <a href="#">Sell</a>
+    <a href="#">Financing</a>
+    <a href="#">Research</a>
+    <a href="#">Contact</a>
+  </nav>
 </header>
 
-<!-- HERO SEARCH -->
-<section class="hero" id="hero">
-    <h2>Find Your Next Vehicle in Canada</h2>
-    <input type="text" id="searchLocation" placeholder="City or Postal Code">
-    <select id="searchMake">
-        <option value="">Any Make</option>
-        <option value="Toyota">Toyota</option>
-        <option value="Honda">Honda</option>
-        <option value="Ford">Ford</option>
-        <option value="BMW">BMW</option>
-    </select>
-    <select id="searchType">
-        <option value="">Any Type</option>
-        <option value="SUV">SUV</option>
-        <option value="Sedan">Sedan</option>
-        <option value="Truck">Truck</option>
-        <option value="Coupe">Coupe</option>
-    </select>
-    <button onclick="filterVehicles()">Search</button>
-    <p id="searchResult" style="margin-top:10px; color:#d71a28; font-weight:bold;"></p>
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <h1>Find Your Next Car, Truck or SUV in Canada</h1>
+  <p>Search thousands of new and used vehicles from dealers and private sellers</p>
+
+  <div class="search-box">
+    <input type="text" placeholder="Enter city or postal code">
+    <input type="text" placeholder="Make (e.g. Toyota)">
+    <input type="text" placeholder="Model (e.g. Camry)">
+    <button>Search</button>
+  </div>
 </section>
 
-<!-- FEATURED VEHICLES -->
-<section id="featured">
-    <h2 class="section-title">Featured Vehicles</h2>
-    <div class="grid" id="vehicleList">
-        <div class="card">
-            <img src="https://via.placeholder.com/400x250" alt="BMW i5">
-            <h3>2024 BMW i5 M60</h3>
-            <p>Price: $77,888 | 24,363 km</p>
-            <button>Trade-in</button>
-            <button>Payment Calculator</button>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/400x250" alt="Subaru Impreza">
-            <h3>2018 Subaru Impreza</h3>
-            <p>Price: $16,488 | 135,873 km</p>
-            <button>Trade-in</button>
-            <button>Payment Calculator</button>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/400x250" alt="Nissan Rogue">
-            <h3>2023 Nissan Rogue SV</h3>
-            <p>Price: $24,588 | 48,087 km</p>
-            <button>Trade-in</button>
-            <button>Payment Calculator</button>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/400x250" alt="Honda Civic">
-            <h3>2022 Honda Civic</h3>
-            <p>Price: $24,689 | 96,674 km</p>
-            <button>Trade-in</button>
-            <button>Payment Calculator</button>
-        </div>
+<!-- ================= CATEGORIES ================= -->
+<section class="categories">
+
+  <h2>Browse by Vehicle Type</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="images/cars.png" alt="Cars Trucks and SUVs">
+      <h3>Cars, Trucks & SUVs</h3>
     </div>
-</section>
 
-<!-- POPULAR VEHICLES -->
-<section id="popular">
-    <h2 class="section-title">Popular Models</h2>
-    <div class="grid">
-        <div class="card"><h3>Ford F-150</h3><button>View Inventory</button></div>
-        <div class="card"><h3>Honda Civic</h3><button>View Inventory</button></div>
-        <div class="card"><h3>Toyota RAV4</h3><button>View Inventory</button></div>
-        <div class="card"><h3>Ford Mustang</h3><button>View Inventory</button></div>
+    <div class="card">
+      <img src="images/heavy-trucks.png" alt="Commercial Trucks">
+      <h3>Commercial / Heavy Trucks</h3>
     </div>
-</section>
 
-<!-- NEWS & ADVICE -->
-<section id="news">
-    <h2 class="section-title">Latest Automotive News</h2>
-    <div class="grid">
-        <div class="card"><h3>10 Cheapest AWD Vehicles in Canada: 2026</h3><p>Jan 23, 2026 | 8 min read</p></div>
-        <div class="card"><h3>Drive Modes Are Getting Weird</h3><p>Jan 22, 2026 | 9 min read</p></div>
-        <div class="card"><h3>What To Do If You Get a Flat Tire</h3><p>Jan 21, 2026 | 4 min read</p></div>
+    <div class="card">
+      <img src="images/trailers.png" alt="Trailers">
+      <h3>Trailers</h3>
     </div>
-</section>
 
-<!-- DEALERS -->
-<section id="dealers">
-    <h2 class="section-title">Dealers</h2>
-    <div class="grid">
-        <div class="card"><h3>Downtown Ford</h3><p>Toronto, ON</p></div>
-        <div class="card"><h3>Kia of St Catharines</h3><p>St Catharines, ON</p></div>
-        <div class="card"><h3>Pickering Honda</h3><p>Pickering, ON</p></div>
-        <div class="card"><h3>BMW Toronto</h3><p>Toronto, ON</p></div>
+    <div class="card">
+      <img src="images/rvs.png" alt="RVs">
+      <h3>RVs</h3>
     </div>
+
+    <div class="card">
+      <img src="images/boats.png" alt="Boats">
+      <h3>Boats</h3>
+    </div>
+
+    <div class="card">
+      <img src="images/watercraft.png" alt="Watercraft">
+      <h3>Watercraft</h3>
+    </div>
+
+    <div class="card">
+      <img src="images/bikes-atvs.png" alt="Bikes and ATVs">
+      <h3>Bikes & ATVs</h3>
+    </div>
+
+    <div class="card">
+      <img src="images/snowmobiles.png" alt="Snowmobiles">
+      <h3>Snowmobiles</h3>
+    </div>
+
+    <div class="card">
+      <img src="images/heavy-equipment.png" alt="Heavy Equipment">
+      <h3>Heavy Equipment</h3>
+    </div>
+
+    <div class="card">
+      <img src="images/farm.png" alt="Farm Equipment">
+      <h3>Farm</h3>
+    </div>
+
+  </div>
 </section>
 
-<!-- FOOTER -->
-<footer id="footer">
-    <p>© 2026 AutoCanada | All rights reserved.</p>
-    <p>
-        <a href="#">About</a> |
-        <a href="#">Contact</a> |
-        <a href="#">Privacy Policy</a>
-    </p>
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>© 2026 AutoMarket Canada. All Rights Reserved.</p>
 </footer>
 
-<!-- JAVASCRIPT -->
-<script>
-const vehicles = [
-    {title:"2024 BMW i5 M60", location:"Toronto", make:"BMW", type:"Sedan"},
-    {title:"2018 Subaru Impreza", location:"Toronto", make:"Subaru", type:"Sedan"},
-    {title:"2023 Nissan Rogue SV", location:"Toronto", make:"Nissan", type:"SUV"},
-    {title:"2022 Honda Civic", location:"Toronto", make:"Honda", type:"Sedan"},
-];
-
-function filterVehicles(){
-    const loc = document.getElementById("searchLocation").value.toLowerCase();
-    const make = document.getElementById("searchMake").value.toLowerCase();
-    const type = document.getElementById("searchType").value.toLowerCase();
-    const results = vehicles.filter(v =>
-        (loc === "" || v.location.toLowerCase().includes(loc)) &&
-        (make === "" || v.make.toLowerCase() === make) &&
-        (type === "" || v.type.toLowerCase() === type)
-    );
-    const resultEl = document.getElementById("searchResult");
-    if(results.length > 0){
-        resultEl.textContent = "Found: " + results.map(v => v.title).join(", ");
-    } else {
-        resultEl.textContent = "No vehicles found.";
-    }
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
